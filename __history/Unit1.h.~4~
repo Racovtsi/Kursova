@@ -1,0 +1,45 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit1H
+#define Unit1H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Vcl.ExtCtrls.hpp>
+#include <Vcl.Imaging.jpeg.hpp>
+#include <Vcl.Dialogs.hpp>
+#include <Vcl.ExtDlgs.hpp>
+//---------------------------------------------------------------------------
+class TForm1 : public TForm
+{
+__published:	// IDE-managed Components
+	TImage *Image1;
+	TImage *Image2;
+	TImage *Image3;
+	TImage *Image4;
+	TImage *Image5;
+	TTimer *Timer1;
+	TButton *Button1;
+	void __fastcall Image1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Image1MouseEnter(TObject *Sender);
+	void __fastcall Timer1Timer(TObject *Sender);
+	void __fastcall Image2MouseEnter(TObject *Sender);
+	void __fastcall AnimationUp(int i);
+	void __fastcall AnimationDown(int i);
+	void __fastcall Image3MouseEnter(TObject *Sender);
+	void __fastcall Image4MouseEnter(TObject *Sender);
+	void __fastcall Image5MouseEnter(TObject *Sender);
+	void __fastcall Image1MouseLeave(TObject *Sender);
+	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall Image2MouseLeave(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TForm1(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm1 *Form1;
+//---------------------------------------------------------------------------
+#endif

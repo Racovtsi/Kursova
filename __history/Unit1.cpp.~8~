@@ -1,0 +1,139 @@
+//---------------------------------------------------------------------------
+#include <Math.h>
+#include <jpeg.hpp>
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+#include "Unit2.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+
+TForm1 *Form1;
+int imgUp,imgDown;
+
+
+void __fastcall TForm1::Forma2(char efa[255])
+{
+ Form2->Label1->Caption = "";
+ Form2->Label1->Caption = Form2->Label1->Caption+efa;
+}
+
+
+void __fastcall TForm1::AnimationUp(int i)
+{
+TImage *Image[5];
+Image[0] = Image1;
+Image[1] = Image2;
+Image[2] = Image3;
+Image[3] = Image4;
+Image[4] = Image5;
+
+ if(Image[i-1]->Height > 120)
+   Timer1->Enabled = false;
+ else{
+  Image[i-1]->Width = Image[i-1]->Width+2;
+  Image[i-1]->Height = Image[i-1]->Height+2;
+	 }
+}
+ //Функція анімації збільшення
+
+void __fastcall TForm1::AnimationDown(int i)
+{
+TImage *Image[5];
+Image[0] = Image1;
+Image[1] = Image2;
+Image[2] = Image3;
+Image[3] = Image4;
+Image[4] = Image5;
+
+ if(Image[i-1]->Height < 105)
+   Timer1->Enabled = false;
+ else{
+  Image[i-1]->Width = Image[i-1]->Width-10;
+  Image[i-1]->Height = Image[i-1]->Height-10;
+	 }
+}
+ //Функція анімації зменшення
+
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Image1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+		  int X, int Y)
+{
+Form2->Show();
+Forma2("1s");
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Image1MouseEnter(TObject *Sender)
+{
+Timer1->Enabled = true;
+imgUp = 1;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Timer1Timer(TObject *Sender)
+{
+//AnimationUp(imgUp);  //Анімація збільшення
+//AnimationDown(imgDown); //Анімація зменшення
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Image2MouseEnter(TObject *Sender)
+{
+Timer1->Enabled = true;
+imgUp = 2;
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Image3MouseEnter(TObject *Sender)
+{
+Timer1->Enabled = true;
+imgUp = 3;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Image4MouseEnter(TObject *Sender)
+{
+Timer1->Enabled = true;
+imgUp = 4;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Image5MouseEnter(TObject *Sender)
+{
+Timer1->Enabled = true;
+imgUp = 5;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Image1MouseLeave(TObject *Sender)
+{
+Timer1->Enabled = true;
+imgDown = 1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+Image1->Width = 155;
+Image1->Height = 155;
+
+Image2->Width = 155;
+Image2->Height = 155;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Image2MouseLeave(TObject *Sender)
+{
+Timer1->Enabled = true;
+imgDown = 2;
+}
+//---------------------------------------------------------------------------
+
+
+
+
