@@ -1,7 +1,6 @@
-//---------------------------------------------------------------------------
-#include <Math.h>
-#include <jpeg.hpp>
+//----------------------------------------------------------------------------
 #include <vcl.h>
+#include <System.IOUtils.hpp>
 #pragma hdrstop
 
 #include "Unit1.h"
@@ -12,14 +11,17 @@
 
 TForm1 *Form1;
 int imgUp,imgDown;
+String form2open;
 
 
-void __fastcall TForm1::Forma2(char efa[255])
+void __fastcall TForm1::Forma2(wchar_t efa[255])
 {
+ Form1->Visible = false;
+ Form2->Show();
  Form2->Label1->Caption = "";
  Form2->Label1->Caption = Form2->Label1->Caption+efa;
 }
-
+ //Функція вивода електронної формули атомів на Form2
 
 void __fastcall TForm1::AnimationUp(int i)
 {
@@ -60,80 +62,97 @@ Image[4] = Image5;
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
+form2open = TFile::ReadAllText("form2open.txt");
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Image1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
 		  int X, int Y)
 {
-Form2->Show();
-Forma2("1s");
-}
-//---------------------------------------------------------------------------
-void __fastcall TForm1::Image1MouseEnter(TObject *Sender)
-{
-Timer1->Enabled = true;
-imgUp = 1;
+Forma2(L"1s\u00b9");
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
 //AnimationUp(imgUp);  //Анімація збільшення
 //AnimationDown(imgDown); //Анімація зменшення
+
+
+if(form2open == "1"){
+Form1->Visible = false;
+Form2->Show();
+}
+else
+Enabled = false;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Image2MouseEnter(TObject *Sender)
+
+void __fastcall TForm1::Image2MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+		  int X, int Y)
 {
-Timer1->Enabled = true;
-imgUp = 2;
+Forma2(L"1s\u00b2");
 }
 //---------------------------------------------------------------------------
 
-
-void __fastcall TForm1::Image3MouseEnter(TObject *Sender)
+void __fastcall TForm1::Image3MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
 {
-Timer1->Enabled = true;
-imgUp = 3;
+Forma2(L"1s\u00b2 2s\u00b9");
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Image4MouseEnter(TObject *Sender)
+
+void __fastcall TForm1::Image4MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+		  int X, int Y)
 {
-Timer1->Enabled = true;
-imgUp = 4;
+Forma2(L"1s\u00b2 2s\u00b2");
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Image5MouseEnter(TObject *Sender)
+void __fastcall TForm1::Image5MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
 {
-Timer1->Enabled = true;
-imgUp = 5;
+Forma2(L"1s\u00b2 2s\u00b2 2p\u00b9");
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Image1MouseLeave(TObject *Sender)
+void __fastcall TForm1::Image6MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+		  int X, int Y)
 {
-Timer1->Enabled = true;
-imgDown = 1;
+Forma2(L"1s\u00b2 2s\u00b2 2p\u00b2");
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Image7MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
+{
+Forma2(L"1s\u00b2 2s\u00b2 2p\u00b3");
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::Image8MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
+{
+Forma2(L"1s\u00b2 2s\u00b2 2p\u2074");
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Image9MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
+{
+Forma2(L"1s\u00b2 2s\u00b2 2p\u2075");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Image10MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
+{
+Forma2(L"1s\u00b2 2s\u00b2 2p\u2076");
+}
+//---------------------------------------------------------------------------
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
-Image1->Width = 155;
-Image1->Height = 155;
-
-Image2->Width = 155;
-Image2->Height = 155;
+Close();
 }
 //---------------------------------------------------------------------------
-
-void __fastcall TForm1::Image2MouseLeave(TObject *Sender)
-{
-Timer1->Enabled = true;
-imgDown = 2;
-}
-//---------------------------------------------------------------------------
-
-
 
 

@@ -76,12 +76,13 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 //AnimationUp(imgUp);  //Анімація збільшення
 //AnimationDown(imgDown); //Анімація зменшення
 
-if(form2open == "1"){      //
-Form1->Visible = false;    //
-Form2->Show();             //
-}                          //  тут ошибка, программа намертво зависає
-else                       //
-Enabled = false;           //
+
+if(form2open == "1"){
+Form1->Visible = false;
+Form2->Show();
+}
+else
+Enabled = false;
 }
 //---------------------------------------------------------------------------
 

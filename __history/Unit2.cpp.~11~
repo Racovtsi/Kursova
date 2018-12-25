@@ -18,10 +18,10 @@ void __fastcall TForm2::Spin(int spin)
  top -=25;
  left +=35;
 
- TImage* Image[255]; // масив із зображенням
+ TImage* Image[255];
 switch(spin){
  case 1 :
- Image[i] = new TImage (Form2); // створює новий спін на формі
+ Image[i] = new TImage (Form2);
  Image[i]->Parent = Form2;
  Image[i]->Left = left;
  Image[i]->Top = top;
@@ -52,12 +52,12 @@ switch(spin){
  }
  i++;
 }
- //функція створює на формі зображення вибраного спіна(1,2,3)
+
 //---------------------------------------------------------------------------
 __fastcall TForm2::TForm2(TComponent* Owner)
 	: TForm(Owner)
 {
-TFile::WriteAllText("form2open.txt","0"); //записує текст "0" в файл "form2open.txt"
+TFile::WriteAllText("form2open.txt","0");
 }
 //---------------------------------------------------------------------------
 
@@ -91,8 +91,8 @@ Spin(3);
 
 void __fastcall TForm2::Button2Click(TObject *Sender)
 {
-TFile::WriteAllText("form2open.txt","1");  //записує текст "1" в файл "form2open.txt"
-ShellExecute(0,0,Application->ExeName.c_str(),0,0,SW_SHOW); //Запускає нову копію програми
+TFile::WriteAllText("form2open.txt","1");
+ShellExecute(0,0,Application->ExeName.c_str(),0,0,SW_SHOW); //Запускаем новую копию
 Form1->Close();
 }
 //---------------------------------------------------------------------------
